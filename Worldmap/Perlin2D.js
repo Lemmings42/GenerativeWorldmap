@@ -16,7 +16,7 @@ function draw() {
     for (var y = 0; y < height; y++) {
       var index = (x + y * width) * 4;
       // var v = noise(xoff, yoff) * 255;
-      var v = noiseSpace[x][y]/1.5;
+      var v = noiseSpace[x][y];
       var c = map(v, -1, 1, 0, 255);
       var r = c;
       var g = c;
