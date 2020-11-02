@@ -1,3 +1,6 @@
+let mins = [];
+let maxes = [];
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // createCanvas(640, 360);
@@ -7,13 +10,13 @@ function draw() {
   var xoff = 0
 
   loadPixels();
-  seed = Math. random()
+  seed = Math.random()
   var noiseSpace = noiseDetail2D(width, height, seed, 100, 4, 1 / 2, 2);
   for (var x = 0; x < width; x++) {
     for (var y = 0; y < height; y++) {
       var index = (x + y * width) * 4;
       // var v = noise(xoff, yoff) * 255;
-      var v = noiseSpace[x][y];
+      var v = noiseSpace[x][y]/1.5;
       var c = map(v, -1, 1, 0, 255);
       var r = c;
       var g = c;
@@ -31,6 +34,15 @@ function draw() {
 
     }
   }
+
+
+  mins.push(noiseSpace.reduce((acc, val)=>{let temp=val.reduce((acc2, val2)=>(val2<acc2)?val2:acc2);return (temp<acc)?temp:acc}, 0));
+
+  maxes.push(noiseSpace.reduce((acc, val)=>{let temp=val.reduce((acc2, val2)=>(val2>acc2)?val2:acc2);return (temp>acc)?temp:acc}, 0));
   updatePixels();
-  noLoop();
+  if (frameCount >= 100){
+    noLoop();
+    console.log("Mins", maxes.reduce((acc, val)=>(val<acc)?val:acc));
+    console.log("Maxes", maxes.reduce((acc, val)=>(val>acc)?val:acc));
+  }
 }
