@@ -42,7 +42,7 @@ function draw() {
   updatePixels();
   if (frameCount >= 100){
     noLoop();
-    console.log("Mins", maxes.reduce((acc, val)=>(val<acc)?val:acc));
-    console.log("Maxes", maxes.reduce((acc, val)=>(val>acc)?val:acc));
+    console.log("Min", mins.reduce((acc, val)=>(val<acc)?val:acc));
+    console.log("Max", maxes.reduce((acc, val)=>(val>acc)?val:acc));
   }
 }
