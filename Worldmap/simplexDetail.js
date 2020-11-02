@@ -30,6 +30,8 @@ function noiseDetail2D(width, height, seed, scale, octaves, persistance, lacunar
         amplitude *= persistance;
         frequency *= lacunarity;
 
+        noiseVal /= (1-Math.pow(persistance, octaves))/(1-persistance);
+
         noiseMap[x][y] = noiseVal;
       }
       // if (noiseVal > maxNoise) {

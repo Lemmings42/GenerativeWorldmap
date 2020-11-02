@@ -40,9 +40,12 @@ function draw() {
 
   maxes.push(noiseSpace.reduce((acc, val)=>{let temp=val.reduce((acc2, val2)=>(val2>acc2)?val2:acc2);return (temp>acc)?temp:acc}, 0));
   updatePixels();
-  if (frameCount >= 100){
-    noLoop();
-    console.log("Min", mins.reduce((acc, val)=>(val<acc)?val:acc));
-    console.log("Max", maxes.reduce((acc, val)=>(val>acc)?val:acc));
-  }
+  // if (frameCount >= 100){
+  //   noLoop();
+  //   console.log("Min", mins.reduce((acc, val)=>(val<acc)?val:acc));
+  //   console.log("Max", maxes.reduce((acc, val)=>(val>acc)?val:acc));
+  // }
+  // console.log("Min", mins.reduce((acc, val)=>(val<acc)?val:acc), "\n","Max", maxes.reduce((acc, val)=>(val>acc)?val:acc), "\n", "Iterations:", frameCount);
+  noLoop();
+
 }
